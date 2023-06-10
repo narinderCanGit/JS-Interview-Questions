@@ -133,6 +133,67 @@
 // console.log(res);
 
 
+----------------------------------------------------
+// FUNCTION calling
+// eg:1
+class product {
+    constructor(name, qty){
+        this.name= name;
+        this.qty= qty
+    }
+
+getname(){
+    console.log('product name is :',this.name);
+    }
+    getqty(){
+        console.log('product qty id:',this.qty);
+    }
+}
+
+// creating the new class instance
+const phone = new product1('samsung',5);
+
+// if we call the product getname() it will call 
+phone.getname();
+product name is : redmi
+// undefined
+
+// if we call mobile.getname().getqty() then the this will call getqty() 
+phone.getname().getqty();
+VM654:8 product name is : iphone
+// VM1030:1 Uncaught TypeError: Cannot read properties of undefined (reading 'getqty')
+//     at <anonymous>:1:16
+
+
+
+// FUNCTION CHAINING 
+// eg:2
+class product1 {
+    constructor(name, qty){
+        this.name= name;
+        this.qty= qty
+    }
+
+getname(){
+    console.log('product name is :',this.name);
+    return this;}
+    getqty(){
+        console.log('product qty id:',this.qty);
+    return this;}
+}
+// creating the new class instance
+const mobile = new product1('redmi',10);
+
+// if we call the product name it will call and return this
+mobile.getname();
+product name is : redmi
+product1 {name: 'redmi', qty: 10}
+
+// if we call mobile.getname().getqty() then the this will call getqty() 
+mobile.getname().getqty();
+VM870:8 product name is : redmi
+VM870:11 product qty id: 10
+product1 {name: 'redmi', qty: 10}
 
 
 
