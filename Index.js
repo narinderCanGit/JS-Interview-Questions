@@ -300,6 +300,7 @@
 
 //  console.log(parseInt("12Pdw1d"));
 
+// let arr = [1,2,3,4,5,6];
 // const result = arr.reduce((sum,curr)=>{
 //     return sum+=parseInt(curr);
 // },0);
@@ -359,6 +360,8 @@
 //Reduce
 //  let arr1 = ['qwe','asd','qwe','test','dummy','asd','qwe'];
 // Output: [ qwe: 3, asd: 2, test: 1, dummy: 1 ]
+// Output: { qwe: 3, asd: 2, test: 1, dummy: 1 }
+
 
 // const result = arr1.reduce((acc,ar)=>{
 //     if(acc[ar]){
@@ -372,16 +375,39 @@
 // console.log(result);
 
 // ---------------------------------Sorting of Numbers-------------------
+// let str = ['aa', 'bb', 'ab',  'cc'];
+// let array = [1,2,3,11,21,123,111,45]
+// str.sort();
+// console.log(str);
 // const array = [ 1, 6, 4, 9, 3 ]
 
 // // sort descending (X to 1)
 // array.sort((a, b) => {
-//   return b - a
+//   return a-b
 // })
 // console.log(array);
 
 // Optional Chaining Operator (?.)
 // const car = {type:"Fiat", model:"500", color:"white"};
-// let res = car.type.a;
-// let res = car.abc?.a;
+// let res = car.type.a.b;
+// let res = car.type.a?.b;
 // console.log(res);
+
+
+// Rest vs spread
+// function test(a, ...rest){
+
+// }
+// test(2,3,4,1,5,5);
+
+// var a=[1,2,3]
+// let b = [6,...a,4];
+// console.log(b);
+
+// let str = "QW";
+// str[0]="A",
+// console.log(str);
+
+// const a=[1,2,3];
+// a=[3,4];
+// console.log(a);

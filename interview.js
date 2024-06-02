@@ -1,9 +1,9 @@
 //Print most occured character
 
 // s = "hello world";
-/* console.log(s.split('')); */
+// console.log(s.split(''));
 // arr = s.split("");
-
+// 1.
 // const ma = new Map();
 // for (var i = 0; i < arr.length; i++) {
 //   if (ma.has(arr[i])) {
@@ -22,7 +22,7 @@
 // }
 
 // console.log(ch);
-
+// 2.
 // const result = arr.reduce((acc,ar)=>{
 //     if(acc[ar]){
 //       acc[ar]=++acc[ar];
@@ -33,10 +33,10 @@
 //     return acc;
 //   },[]);
 
-  // for(let key in result){
-  //   console.log(result[key])
-  // }
-  //  console.log(result);
+//   for(let key in result){
+//     console.log(result[key])
+//   }
+//    console.log(result);
 
 // remove duplicates in  Array
 // arr = [1, 4, 5, 3, 1, 3, 4];
@@ -113,8 +113,6 @@
 // Array Flattening
 // let arr= ['Dog', 'Cat', ['Sheep', ['Wolf', 'Lion']]]
 //Output: ['Dog', 'Cat', 'Sheep', 'Wolf', 'Lion']
-
-
 
 /* console.log(Array.isArray(arr)); */
 //  let res=[];
