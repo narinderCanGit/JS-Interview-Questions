@@ -1,4 +1,4 @@
-//Print most occured character
+//  1.Print most occured character
 
 // s = "hello world";
 // console.log(s.split(''));
@@ -51,6 +51,8 @@
 
 // console.log(res);
 
+//--------------------------------------------------------------------------------------------
+
 //Prototype
 
 //   const arrr=[2,3,4,5];
@@ -72,6 +74,8 @@
 // }
 // test()
 
+//--------------------------------------------------------------------------------------------
+
 // var fruits = ["apples", "bananas", "cucumbers", "dragonfruit"];
 
 // for (var i = 0; i < fruits.length-1; i++) {
@@ -82,6 +86,8 @@
 
 
 // console.log(typeof(NaN));
+
+//--------------------------------------------------------------------------------------------
 
 /* let arr = [3,9,3,4,-5,6,3,2]; */
 // let arr = [0,0];
@@ -108,7 +114,7 @@
 // 	console.log("Subarray 0 not present");
 // }
 
-
+//--------------------------------------------------------------------------------------------
 
 // Array Flattening
 // let arr= ['Dog', 'Cat', ['Sheep', ['Wolf', 'Lion']]]
@@ -129,6 +135,67 @@
 // flatten(arr); 
 
 // console.log(res);
+
+//--------------------------------------------------------------------------------------------
+
+// Flatten the Object
+// const obj = {
+//     address:{
+//         name:"test",
+//         location:[
+//             321312,3213
+//         ],
+//         subaddress:{
+//             line1:"sadasdsa",
+//             line2:{
+//             	pin: 1234
+//             }
+//         }
+//     }
+// }
+
+// *SOLUTION
+// function transform(obj, prefix = '') {
+//     let result = {};
+//     for (let key in obj) {
+//         if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+//             Object.assign(result, transform(obj[key], `${prefix}${key}_`));
+//         } else {
+//             result[`${prefix}${key}`] = obj[key];
+//         }
+//     }
+//     return result;
+// }
+
+// const output = transform(obj, '');
+// console.log(output);
+
+// //Solution - brute force
+// let output = {};
+// function flattenObject(obj, str1){
+//   let key = Object.keys(obj);
+// 	let str = str1;
+//   key.forEach(item => {
+//     if(typeof(obj[item])==='object' && !Array.isArray(obj[item])){
+//     if(str1===''){
+//     	str=item
+//     } else{
+//     	str=str1+'_'+item;
+//     }
+//     flattenObject(obj[item], str)
+//   }else{
+//     str=str+'_'+item;
+//     output[str] = obj[item];
+//     str=str1;
+//   }
+//   })
+//   return output;
+// }
+
+// console.log(flattenObject(obj,''));
+
+//--------------------------------------------------------------------------------------------
+
 
 
 
