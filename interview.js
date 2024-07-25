@@ -13,7 +13,7 @@
 //   }
 // }
 // var max = 0;
-// var ch = "a";
+// var ch = '';
 // for (const [key, value] of ma) {
 //   if (value > max) {
 //     max = value;
@@ -22,13 +22,13 @@
 // }
 
 // console.log(ch);
+
 // 2.
 // const result = arr.reduce((acc,ar)=>{
 //     if(acc[ar]){
 //       acc[ar]=++acc[ar];
 //     }else{
 //       acc[ar]=1;
-
 //     }
 //     return acc;
 //   },[]);
@@ -37,6 +37,8 @@
 //     console.log(result[key])
 //   }
 //    console.log(result);
+
+//---------------------------------------------------------------------------------------------
 
 // remove duplicates in  Array
 // arr = [1, 4, 5, 3, 1, 3, 4];
@@ -196,9 +198,74 @@
 
 //--------------------------------------------------------------------------------------------
 
+//*Memoization 
+
+// let map = new Map();
+
+// function addThreeNums(a,b,c){
+// 	let key= `${a}_${b}_${c}`;
+//   let result = a+b+c;
+//   	if(map.has(key)){
+//   	console.log('memoized');
+//   	return map.get(key);
+//   }
+//   else{
+//       map.set(key, result);
+//       return result;
+//   } 
+// }
+
+// console.log(addThreeNums(1,2,3));
+// console.log(addThreeNums(1,2,3));
 
 
+//--------------------------------------------------------------------------------------------
 
+// *Splice Pollyfill
+// !Polyfill for splice - there are some functions that are not supported in old browsers. So
+// !Write logic in vanila JS to replicate that function
 
+// Array.prototype.splice = function(index, del, ...insert) {
+//     let result=[];
+//     let secondHalf = this.slice(index+del,  this.length);
+//     for(let i=0; i<this.length; i++){
+//         if(i===index){
+//            i= i+del-1; 
+//            break;
+//         }else{
+//             result.push(this[i])
+//         }
+//     }
+//     let temp = index
+//     if(insert.length){
+//         for(let j=0; j<insert.length; j++){
+//            result[temp] = insert[j];
+//             temp++;
+//         }
+//     }
+//     let insertionIndex = result.length;
+//      for(let i=0; i<secondHalf.length; i++){
+//         result[insertionIndex] = secondHalf[i];
+//         insertionIndex++;
+//      }
+//     return result;
+// }
 
+// const arr = [1,2,3,4,5,6];
+// const output = arr.splice(1,1,8,9)
+// console.log(output);
 
+//-----------------------------------------------------------------------------------------------------
+
+// *Convert numbers to letters beyond the 26 character alphabet
+
+// function numberToLetters(num) {
+//     let letters = ''
+//     while (num >= 0) {
+//         letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[num % 26] + letters
+//         num = Math.floor(num / 26) - 1
+//     }
+//     return letters
+// }
+
+// console.log(numberToLetters(28));
