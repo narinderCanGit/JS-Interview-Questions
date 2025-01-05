@@ -122,6 +122,36 @@ const addThreeNums = memoize();
 // console.log(addThreeNums(1,2,3));
 // console.log(addThreeNums(1,2,3));
 
+// ? const add = (a, b) => a + b;
+// ? const memoizedAdd = memoize(add);
+
+// ? console.log(memoizedAdd(2, 3)); // Computes and caches result: 5
+// ? console.log(memoizedAdd(2, 3)); // Returns cached result: 5
+
+//  add = (a, b) => a + b;
+// const memoizedAdd = memoize(add);
+
+// console.log(memoizedAdd(2, 3)); // Computes and caches result: 5
+// console.log(memoizedAdd(2, 3)); // Returns cached result: 5
+
+// function memoize(fn) {
+//   let map = new Map();
+//   return function memoizedAdd(...input) {
+//     let key = input[0];
+//     for (let i = 1; i < input.length; i++) {
+//       key += "_" + input[i];
+//     }
+//     if (map.has(key)) {
+//       console.log("Cached Data");
+//       return map.get(key);
+//     } else {
+//       const res = fn(...input);
+//       map.set(key, res);
+//       return res;
+//     }
+//   };
+// }
+
 //---------------------------------------------------------------------------------------------------
 
 //* Pollyfill
@@ -173,31 +203,33 @@ Array.prototype.flattenWithDepth = function (depth) {
 console.log(data.flat(2)); */
 
 //* Pollyfil for splice
-Array.prototype.splice = function (index, del, ...insert) {
-  let result = [];
-  let secondHalf = this.slice(index + del, this.length);
-  for (let i = 0; i < this.length; i++) {
-    if (i === index) {
-      i = i + del - 1;
-      break;
-    } else {
-      result.push(this[i]);
+Array.prototype.splice = function(index, del, ...insert) {
+    let result=[];
+   // Push elements till index to the new array
+    for(let i=0; i<this.length; i++){
+        if(i===index){
+           break;
+        }else{
+            result.push(this[i])
+        }
     }
-  }
-  let temp = index;
-  if (insert.length) {
-    for (let j = 0; j < insert.length; j++) {
-      result[temp] = insert[j];
-      temp++;
+     // insert elements at the index
+    let temp = index
+    if(insert.length){
+        for(let j=0; j<insert.length; j++){
+           result[temp] = insert[j];
+            temp++;
+        }
     }
-  }
-  let insertionIndex = result.length;
-  for (let i = 0; i < secondHalf.length; i++) {
-    result[insertionIndex] = secondHalf[i];
-    insertionIndex++;
-  }
-  return result;
-};
+     // insert second half of the array()
+    let secondHalf = this.slice(index+del,  this.length);
+    let insertionIndex = result.length;
+     for(let i=0; i<secondHalf.length; i++){
+        result[insertionIndex] = secondHalf[i];
+        insertionIndex++;
+     }
+    return result;
+}
 
 const spliceArr = [1, 2, 3, 4, 5, 6];
 // const output = spliceArr.splice(1,1,8,9)
@@ -264,3 +296,132 @@ function countOccurance(arr) {
 /* console.log(countOccurance(arr)); */
 
 //-----------------------------------------------------------------------------------------------------
+
+//* Given two strings s and t, return true if they are equal when both are typed into empty text editors.
+//* '#' means a backspace character.
+//* Note that after backspacing an empty text, the text will continue empty.
+
+// Example 1:
+// Input: s = "ab#c", t = "ad#c"
+// Output: true
+// Explanation: Both s and t become "ac".
+
+// Example 2:
+// Input: s = "ab##", t = "c#d#"
+// Output: true
+// Explanation: Both s and t become "".
+
+// Example 3:
+// Input: s = "a#c", t = "b"
+// Output: false
+// Explanation: s becomes "c" while t becomes "b".
+
+// Time Complexity: O(n+m)
+// Space Complexity: O(n+m)
+
+function backspaceCompare(s, t) {
+    function buildFinalString(str) {
+        const stack = [];
+        for (const char of str) {
+            if (char === '#') {
+                if (stack.length > 0) {
+                    stack.pop();
+                }
+            } else {
+                stack.push(char);
+            }
+        }
+        return stack.join('');
+    }
+
+    return buildFinalString(s) === buildFinalString(t);
+}
+let s1 = "ab#c";
+let t1 = "ad#c";
+// console.log(backspaceCompare(s1, t1));
+
+//-----------------------------------------------------------------------------------------------------
+
+let computeAmount = {
+    sum: 0,
+    value(){
+        return this.sum;
+    },
+    thousand(amount){
+       this.sum += amount*1000;
+       return this;
+    },
+    lacs(amount){
+       this.sum += amount*100000;
+       return this;
+    },
+    crore(amount){
+        this.sum += amount*10000000;
+        return this;
+     }
+}
+
+// ? console.log(computeAmount.lacs(15).crore(5).crore(2).lacs(20).thousand(45).crore(7).value());
+// output - 143545000
+
+//--------------------------------------------------------------------------------------------------------
+
+// *    1.Using Closures
+// ? console.log(computeAmount().lacs(15).crore(5).crore(2).lacs(20).thousand(45).crore(7).value());
+
+function computeAmount() {
+    let total = 0;
+
+    const operations = {
+        lacs(value) {
+            total += value * 100000;
+            return operations;
+        },
+        crore(value) {
+            total += value * 10000000;
+            return operations;
+        },
+        thousand(value) {
+            total += value * 1000;
+            return operations;
+        },
+        value() {
+            return total;
+        }
+    };
+
+    return operations;
+}
+
+// *    2.Using Es6 class
+class Amount {
+    constructor() {
+        this.total = 0;
+    }
+
+    lacs(value) {
+        this.total += value * 100000;
+        return this;
+    }
+
+    crore(value) {
+        this.total += value * 10000000;
+        return this;
+    }
+
+    thousand(value) {
+        this.total += value * 1000;
+        return this;
+    }
+
+    value() {
+        return this.total;
+    }
+}
+
+function computeAmount() {
+    return new Amount();
+}
+// console.log(computeAmount().lacs(15).crore(5).crore(2).lacs(20).thousand(45).crore(7).value());
+
+//-------------------------------------------------------------------------------------------------------
