@@ -367,9 +367,9 @@ let computeAmount = {
 //--------------------------------------------------------------------------------------------------------
 
 // *    1.Using Closures
-// ? console.log(computeAmount().lacs(15).crore(5).crore(2).lacs(20).thousand(45).crore(7).value());
+// ? console.log(computeAmount1().lacs(15).crore(5).crore(2).lacs(20).thousand(45).crore(7).value());
 
-function computeAmount() {
+function computeAmount1() {
     let total = 0;
 
     const operations = {
@@ -419,9 +419,18 @@ class Amount {
     }
 }
 
-function computeAmount() {
+function computeAmount2() {
     return new Amount();
 }
-// console.log(computeAmount().lacs(15).crore(5).crore(2).lacs(20).thousand(45).crore(7).value());
+// console.log(computeAmount2().lacs(15).crore(5).crore(2).lacs(20).thousand(45).crore(7).value());
 
 //-------------------------------------------------------------------------------------------------------
+
+//* covnert array to object 
+const print = [  'Test',];
+ const resArray = print.reduce((acc, ar) => {
+   acc[ar] = ar;
+  return acc;
+ },{});
+ 
+ console.log(resArray);

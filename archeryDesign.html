@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      #one {
+        height: 200px;
+        width: 200px;
+      }
+      #two {
+        height: 150px;
+        width: 150px;
+      }
+      #three {
+        height: 100px;
+        width: 100px;
+      }
+      #four {
+        height: 50px;
+        width: 50px;
+      }
+      .outer {
+        background-color: brown;
+      }
+      .inner {
+        background-color: white;
+      }
+      .common {
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="one" class="common outer">
+      <div id="two" class="common inner">
+        <div id="three" class="common outer">
+          <div id="four" class="common inner"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
